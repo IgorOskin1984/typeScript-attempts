@@ -13,12 +13,7 @@ const tasks: Array<TaskType> = [
 
 const deleteTask = (id: number) => {
 	const newTasks = tasks.filter((item) => {
-		if (item.id !== id) {
-			return true
-		}
-		else {
-			return false
-		}
+		return item.id !== id
 	})
 	console.log(newTasks);
 }
