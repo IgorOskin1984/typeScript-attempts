@@ -4,7 +4,7 @@ import s from './Todolist.module.css'
 import { FilterValuesType } from "../../App";
 
 export type TaskType = {
-	id: number,
+	id: string,
 	title: string,
 	isDone: boolean
 }
@@ -12,7 +12,7 @@ export type TaskType = {
 type PropsType = {
 	title: string
 	tasks: Array<TaskType>
-	deleteTask: (id: number) => void
+	deleteTask: (id: string) => void
 	changeFilter: (value: FilterValuesType) => void
 }
 
