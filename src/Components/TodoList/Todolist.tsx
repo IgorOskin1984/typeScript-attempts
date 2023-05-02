@@ -12,11 +12,12 @@ type PropsType = {
 	title: string
 	tasks: Array<TaskType>
 	deleteTask: Function
+	changeList: Function
 }
 
 export function Todolist(props: PropsType) {
 	return (
-		<div >
+		<div className={s.todolist} >
 			<h3>{props.title}</h3>
 			<div >
 				<input />
@@ -31,9 +32,9 @@ export function Todolist(props: PropsType) {
 				)}
 			</ul>
 			<div className={s.buttons}>
-				<button>All</button>
-				<button>Active</button>
-				<button>Completed</button>
+				<button onClick={() => { props.changeList('all') }}>All</button>
+				<button onClick={() => { props.changeList('active') }}>Active</button>
+				<button onClick={() => { props.changeList('completed') }}>Completed</button>
 			</div>
 		</div>
 	)
