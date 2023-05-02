@@ -26,9 +26,14 @@ export function Todolist(props: PropsType) {
 			<div >
 				<input placeholder={'type new task'}
 					value={newTaskTitle}
-					onChange={(e) => { setNewTaskTitle(e.currentTarget.value) }}
+					onChange={(e) => {
+						setNewTaskTitle(e.currentTarget.value)
+					}}
 				/>
-				<button onClick={() => props.addTask(newTaskTitle)}>+</button>
+				<button onClick={() => {
+					props.addTask(newTaskTitle)
+					setNewTaskTitle('')
+				}} >+</button>
 			</div>
 			<ul className={s.list}>
 				{props.tasks.map(t => <li key={t.id}
