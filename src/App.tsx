@@ -1,9 +1,9 @@
-import React from 'react';
+import React, { useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import { TaskType, Todolist } from './Components/DodoList/Todolist';
 
-const tasks: Array<TaskType> = [
+const initialTasks: Array<TaskType> = [
 	{ id: 1, title: 'html/CSS', isDone: true },
 	{ id: 2, title: 'js', isDone: true },
 	{ id: 3, title: 'react', isDone: true },
@@ -11,11 +11,15 @@ const tasks: Array<TaskType> = [
 	{ id: 5, title: 'toolkit', isDone: false }
 ]
 
-const deleteTask = (id: number) => {
-	const newTasks = tasks.filter(item => item.id !== id)
-}
-
 function App() {
+
+	const [tasks, setTasks] = useState(initialTasks)
+
+	const deleteTask = (id: number) => {
+		const newTasks = tasks.filter(item => item.id !== id)
+		setTasks(newTasks)
+	}
+
 	return (
 		<div className='App'>
 			<div className='container'>
