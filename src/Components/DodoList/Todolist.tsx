@@ -21,18 +21,11 @@ export function Todolist(props: PropsType) {
 				<button>+</button>
 			</div>
 			<ul>
-				<li>
-					<input type="checkbox" checked={true} />
-					<span>{props.tasks[0].title} </span>
+				{props.tasks.map(t => <li>
+					<input type="checkbox" checked={t.isDone} />
+					<span>{t.title} </span>
 				</li>
-				<li>
-					<input type="checkbox" checked={true} />
-					<span>{props.tasks[1].title} </span>
-				</li>
-				<li>
-					<input type="checkbox" checked={false} />
-					<span>{props.tasks[2].title} </span>
-				</li>
+				)}
 			</ul>
 			<div>
 				<button>All</button>

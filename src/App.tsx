@@ -6,12 +6,14 @@ import { TaskType, Todolist } from './Components/DodoList/Todolist';
 const tasks1: Array<TaskType> = [
 	{ id: 1, title: 'html/CSS', isDone: true },
 	{ id: 2, title: 'js', isDone: true },
-	{ id: 3, title: 'react', isDone: true }
+	{ id: 3, title: 'react', isDone: true },
+	{ id: 4, title: 'redux', isDone: true },
+	{ id: 5, title: 'toolkit', isDone: false }
 ]
 const tasks2: Array<TaskType> = [
 	{ id: 1, title: 'lkhlkh', isDone: true },
 	{ id: 2, title: 'lknlk', isDone: true },
-	{ id: 3, title: 'lkhlkh', isDone: true }
+	//{ id: 3, title: 'lkhlkh', isDone: true }
 ]
 
 function App() {
