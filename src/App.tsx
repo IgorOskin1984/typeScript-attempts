@@ -14,6 +14,12 @@ function App() {
 		{ id: v1(), title: 'redux', isDone: true },
 		{ id: v1(), title: 'toolkit', isDone: false }
 	])
+	const addTask = () => {
+		const newTask = { id: v1(), title: 'New Task', isDone: false };
+		const newTasks = [newTask, ...tasks]
+		setTasks(newTasks);
+		//setTasks(tasks.concat(newTask));
+	}
 	const deleteTask = (id: string) => {
 		const newTasks = tasks.filter(item => item.id !== id)
 		setTasks(newTasks)
@@ -41,6 +47,7 @@ function App() {
 					tasks={filteredTask}
 					deleteTask={deleteTask}
 					changeFilter={changeFilter}
+					addTask={addTask}
 				/>
 			</div>
 		</div>
