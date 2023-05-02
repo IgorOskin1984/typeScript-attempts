@@ -1,5 +1,5 @@
 import { type } from "os";
-import React, { useState } from "react";
+import React, { ChangeEvent, ChangeEventHandler, KeyboardEvent, KeyboardEventHandler, useState } from "react";
 import s from './Todolist.module.css'
 import { FilterValuesType } from "../../App";
 
@@ -20,21 +20,24 @@ type PropsType = {
 export function Todolist(props: PropsType) {
 
 	const [newTaskTitle, setNewTaskTitle] = useState('')
+
+	const onNewTaskTitleHandlerChange = (e: ChangeEvent<HTMLInputElement>) => { setNewTaskTitle(e.currentTarget.value) }
+
+	const onKeyPressUpSetNewTaskTitle = (e: KeyboardEvent<HTMLInputElement>) => {
+		if (e.code === 'Enter') {
+			props.addTask(newTaskTitle)
+			setNewTaskTitle('')
+		}
+	}
+
 	return (
 		<div className={s.todolist} >
 			<h3>{props.title}</h3>
 			<div >
 				<input placeholder={'type new task'}
 					value={newTaskTitle}
-					onChange={(e) => {
-						setNewTaskTitle(e.currentTarget.value)
-					}}
-					onKeyUp={(e) => {
-						if (e.code === 'Enter') {
-							props.addTask(newTaskTitle)
-							setNewTaskTitle('')
-						}
-					}}
+					onChange={onNewTaskTitleHandlerChange}
+					onKeyUp={onKeyPressUpSetNewTaskTitle}
 				/>
 				<button onClick={() => {
 					props.addTask(newTaskTitle)
