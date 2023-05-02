@@ -1,5 +1,6 @@
 import { type } from "os";
 import React from "react";
+import s from './Todolist.module.css'
 
 export type TaskType = {
 	id: number,
@@ -15,21 +16,21 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 	return (
-		<div>
+		<div >
 			<h3>{props.title}</h3>
-			<div>
+			<div >
 				<input />
 				<button>+</button>
 			</div>
-			<ul>
-				{props.tasks.map(t => <li>
+			<ul className={s.list}>
+				{props.tasks.map(t => <li className={s.item}>
 					<input type="checkbox" checked={t.isDone} />
 					<span>{t.title} </span>
 					<button onClick={() => { props.deleteTask(t.id) }}>delete</button>
 				</li>
 				)}
 			</ul>
-			<div>
+			<div className={s.buttons}>
 				<button>All</button>
 				<button>Active</button>
 				<button>Completed</button>
