@@ -14,9 +14,9 @@ function App() {
 		{ id: v1(), title: 'redux', isDone: true },
 		{ id: v1(), title: 'toolkit', isDone: false }
 	])
-	const addTask = () => {
-		const newTask = { id: v1(), title: 'New Task', isDone: false };
-		const newTasks = [newTask, ...tasks]
+	const addTask = (taskTtle: string) => {
+		const newTask = { id: v1(), title: taskTtle, isDone: false };
+		const newTasks = [newTask, ...tasks];
 		setTasks(newTasks);
 		//setTasks(tasks.concat(newTask));
 	}
