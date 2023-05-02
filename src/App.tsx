@@ -3,25 +3,35 @@ import logo from './logo.svg';
 import './App.css';
 import { TaskType, Todolist } from './Components/DodoList/Todolist';
 
-const tasks1: Array<TaskType> = [
+const tasks: Array<TaskType> = [
 	{ id: 1, title: 'html/CSS', isDone: true },
 	{ id: 2, title: 'js', isDone: true },
 	{ id: 3, title: 'react', isDone: true },
 	{ id: 4, title: 'redux', isDone: true },
 	{ id: 5, title: 'toolkit', isDone: false }
 ]
-const tasks2: Array<TaskType> = [
-	{ id: 1, title: 'lkhlkh', isDone: true },
-	{ id: 2, title: 'lknlk', isDone: true },
-	//{ id: 3, title: 'lkhlkh', isDone: true }
-]
+
+const deleteTask = (id: number) => {
+	const newTasks = tasks.filter((item) => {
+		if (item.id !== id) {
+			return true
+		}
+		else {
+			return false
+		}
+	})
+	console.log(newTasks);
+}
 
 function App() {
 	return (
 		<div className='App'>
-			<Todolist title={'What to learn'} tasks={tasks1} />
-			<Todolist title={'Movies'} tasks={tasks2} />
-			{/*<Todolist title={'Songs'} />*/}
+			<div className='container'>
+				<Todolist title={'What to learn'}
+					tasks={tasks}
+					deleteTask={deleteTask}
+				/>
+			</div>
 		</div>
 	);
 }
