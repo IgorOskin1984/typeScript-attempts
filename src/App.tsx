@@ -19,8 +19,8 @@ function App() {
 	}
 
 	const [filter, setFilter] = useState<FilterValuesType>('all')
-	const changeList = (str: FilterValuesType) => {
-		setFilter(str)
+	const changeFilter = (value: FilterValuesType) => {
+		setFilter(value)
 	}
 
 
@@ -39,7 +39,7 @@ function App() {
 				<Todolist title={'What to learn'}
 					tasks={filteredTask}
 					deleteTask={deleteTask}
-					changeList={changeList}
+					changeFilter={changeFilter}
 				/>
 			</div>
 		</div>
