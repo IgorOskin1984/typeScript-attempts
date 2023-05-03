@@ -20,15 +20,20 @@ type PropsType = {
 export function Todolist(props: PropsType) {
 
 	const [newTaskTitle, setNewTaskTitle] = useState('')
-
 	const onNewTaskTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => { setNewTaskTitle(e.currentTarget.value) }
-
 	const onKeyPressUpHendler = (e: KeyboardEvent<HTMLInputElement>) => {
 		if (newTaskTitle && e.code === 'Enter') {
 			props.addTask(newTaskTitle)
 			setNewTaskTitle('')
 		}
 	}
+	const addTask = () => {
+		props.addTask(newTaskTitle)
+		setNewTaskTitle('')
+	}
+	const onAllchangeFilter = () => props.changeFilter('All')
+	const onActivechangeFilter = () => props.changeFilter('Active')
+	const onCompletedchangeFilter = () => props.changeFilter('Completed')
 
 	return (
 		<div className={s.container} >
@@ -39,10 +44,7 @@ export function Todolist(props: PropsType) {
 					onChange={onNewTaskTitleChangeHandler}
 					onKeyUp={onKeyPressUpHendler}
 				/>
-				<button onClick={() => {
-					props.addTask(newTaskTitle)
-					setNewTaskTitle('')
-				}} >+</button>
+				<button onClick={addTask} >+</button>
 			</div>
 			<ul className={s.list}>
 				{props.tasks.map(t => <li key={t.id}
@@ -54,9 +56,9 @@ export function Todolist(props: PropsType) {
 				)}
 			</ul>
 			<div className={s.actives}>
-				<button onClick={() => { props.changeFilter('All') }}>All</button>
-				<button onClick={() => { props.changeFilter('Active') }}>Active</button>
-				<button onClick={() => { props.changeFilter('Completed') }}>Completed</button>
+				<button onClick={onAllchangeFilter}>All</button>
+				<button onClick={onActivechangeFilter}>Active</button>
+				<button onClick={onCompletedchangeFilter}>Completed</button>
 			</div>
 		</div>
 	)
