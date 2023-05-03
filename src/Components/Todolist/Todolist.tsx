@@ -47,11 +47,19 @@ export const Todolist = (props: PropsType) => {
 					onChange={(e) => {
 						setInputTitle(e.target.value)
 					}}
+					onKeyUp={(e) => {
+						if (e.code === 'Enter') {
+							props.addNewTask(inputTitle)
+							setInputTitle('')
+						}
+					}}
 				/>
 				<button onClick={() => {
 					props.addNewTask(inputTitle)
 					setInputTitle('')
-				}}>+</button>
+				}}
+
+				>+</button>
 			</div>
 
 			<ul className={s.list}>
