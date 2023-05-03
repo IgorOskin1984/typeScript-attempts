@@ -31,9 +31,9 @@ export function Todolist(props: PropsType) {
 	}
 
 	return (
-		<div className={s.todolist} >
+		<div className={s.container} >
 			<h3>{props.title}</h3>
-			<div >
+			<div className={s.inputContainer} >
 				<input placeholder={'type new task'}
 					value={newTaskTitle}
 					onChange={onNewTaskTitleHandlerChange}
@@ -53,7 +53,7 @@ export function Todolist(props: PropsType) {
 				</li>
 				)}
 			</ul>
-			<div className={s.buttons}>
+			<div className={s.actives}>
 				<button onClick={() => { props.changeFilter('All') }}>All</button>
 				<button onClick={() => { props.changeFilter('Active') }}>Active</button>
 				<button onClick={() => { props.changeFilter('Completed') }}>Completed</button>
