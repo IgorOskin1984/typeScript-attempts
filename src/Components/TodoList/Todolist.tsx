@@ -21,9 +21,9 @@ export function Todolist(props: PropsType) {
 
 	const [newTaskTitle, setNewTaskTitle] = useState('')
 
-	const onNewTaskTitleHandlerChange = (e: ChangeEvent<HTMLInputElement>) => { setNewTaskTitle(e.currentTarget.value) }
+	const onNewTaskTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => { setNewTaskTitle(e.currentTarget.value) }
 
-	const onKeyPressUpSetNewTaskTitle = (e: KeyboardEvent<HTMLInputElement>) => {
+	const onKeyPressUpHendler = (e: KeyboardEvent<HTMLInputElement>) => {
 		if (newTaskTitle && e.code === 'Enter') {
 			props.addTask(newTaskTitle)
 			setNewTaskTitle('')
@@ -36,8 +36,8 @@ export function Todolist(props: PropsType) {
 			<div className={s.inputContainer} >
 				<input placeholder={'type new task'}
 					value={newTaskTitle}
-					onChange={onNewTaskTitleHandlerChange}
-					onKeyUp={onKeyPressUpSetNewTaskTitle}
+					onChange={onNewTaskTitleChangeHandler}
+					onKeyUp={onKeyPressUpHendler}
 				/>
 				<button onClick={() => {
 					props.addTask(newTaskTitle)
