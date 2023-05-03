@@ -46,6 +46,11 @@ export function Todolist(props: PropsType) {
 				/>
 				<button onClick={addTask} >+</button>
 			</div>
+			<div className={s.actives}>
+				<button onClick={onAllchangeFilter}>All</button>
+				<button onClick={onActivechangeFilter}>Active</button>
+				<button onClick={onCompletedchangeFilter}>Completed</button>
+			</div>
 			<ul className={s.list}>
 				{props.tasks.map(t => <li key={t.id}
 					className={s.item}>
@@ -55,11 +60,6 @@ export function Todolist(props: PropsType) {
 				</li>
 				)}
 			</ul>
-			<div className={s.actives}>
-				<button onClick={onAllchangeFilter}>All</button>
-				<button onClick={onActivechangeFilter}>Active</button>
-				<button onClick={onCompletedchangeFilter}>Completed</button>
-			</div>
 		</div>
 	)
 }
