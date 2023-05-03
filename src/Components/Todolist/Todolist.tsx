@@ -1,6 +1,7 @@
-import React, { MouseEvent, MouseEventHandler, useState } from "react";
+import React, { KeyboardEvent, useState } from "react";
 import s from './Todolist.module.css'
 import { FilterType } from "../../App";
+import { ChangeEvent } from "react";
 
 export type TaskType = {
 	id: string
@@ -33,8 +34,19 @@ export const Todolist = (props: PropsType) => {
 		})
 	}
 
-	const onClickDeleteTask = (id: number) => {
+	//const onClickDeleteTask = (id: string) => {
+	//	props.deleteTask(id)
+	//}
 
+	const onHendlerChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setInputTitle(e.target.value)
+	}
+
+	const onHandlerKeyUp = (e: KeyboardEvent) => {
+		if (e.code === 'Enter') {
+			props.addNewTask(inputTitle)
+			setInputTitle('')
+		}
 	}
 
 
@@ -46,15 +58,8 @@ export const Todolist = (props: PropsType) => {
 				<input type="text"
 					placeholder="Type new task"
 					value={inputTitle}
-					onChange={(e) => {
-						setInputTitle(e.target.value)
-					}}
-					onKeyUp={(e) => {
-						if (e.code === 'Enter') {
-							props.addNewTask(inputTitle)
-							setInputTitle('')
-						}
-					}}
+					onChange={onHendlerChange}
+					onKeyUp={onHandlerKeyUp}
 				/>
 				<button onClick={() => {
 					props.addNewTask(inputTitle)

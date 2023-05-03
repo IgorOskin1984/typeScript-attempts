@@ -4,14 +4,14 @@ import { TaskType, Todolist } from './Components/Todolist/Todolist';
 import { v1 } from 'uuid';
 import { type } from 'os';
 
-const title = 'What to learn'
+const title: string = 'What to learn'
 
 export type FilterType = 'All' | 'Active' | 'Completed'
 
 
 function App() {
 
-	const [tasks, setTasks] = useState([
+	const [tasks, setTasks] = useState<Array<TaskType>>([
 		{ id: v1(), title: 'Rest API', isDone: true },
 		{ id: v1(), title: 'HTML CSS', isDone: false },
 		{ id: v1(), title: 'React', isDone: false },
