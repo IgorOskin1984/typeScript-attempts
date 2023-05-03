@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import s from './Todolist.module.css'
 
 export type TaskType = {
@@ -14,6 +14,8 @@ type PropsType = {
 }
 
 export const Todolist = (props: PropsType) => {
+
+	const [inputTitle, setInputTitle] = useState('Hello')
 
 	const listItemCreater = (tasks: Array<TaskType>) => {
 		return tasks.map((t) => {
@@ -40,6 +42,10 @@ export const Todolist = (props: PropsType) => {
 			<div className={s.inputContainer}>
 				<input type="text"
 					placeholder="Type new task"
+					value={inputTitle}
+					onChange={(e) => {
+						setInputTitle(e.target.value)
+					}}
 				/>
 				<button>+</button>
 			</div>
