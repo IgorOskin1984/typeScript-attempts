@@ -28,8 +28,10 @@ export function Todolist(props: PropsType) {
 		}
 	}
 	const addTask = () => {
-		props.addTask(newTaskTitle)
-		setNewTaskTitle('')
+		if (newTaskTitle) {
+			props.addTask(newTaskTitle)
+			setNewTaskTitle('')
+		}
 	}
 	const onAllchangeFilter = () => props.changeFilter('All')
 	const onActivechangeFilter = () => props.changeFilter('Active')
