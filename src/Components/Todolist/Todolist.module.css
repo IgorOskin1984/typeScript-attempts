@@ -1,0 +1,72 @@
+.container {
+	max-width: 300px;
+	display: flex;
+	flex-direction: column;
+	padding: 30px;
+	background: rgba(128, 128, 128, 0.466);
+	border-radius: 10px;
+}
+
+.inputContaiher {
+	display: flex;
+	gap: 20px;
+	justify-content: space-between;
+}
+
+.inputContaiher input {
+	flex: 0 1 80%;
+	font-size: 16px;
+	line-height: 1.5;
+	border-radius: 5px;
+	padding: 5px 10px;
+}
+
+.inputContaiher button,
+.item button {
+	font-weight: 700;
+	color: black;
+	border-radius: 5px;
+}
+
+.list {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	row-gap: 15px;
+	padding: 0;
+	margin: 20px 0;
+}
+
+.item {
+	display: flex;
+	justify-content: space-between;
+}
+
+.item span {
+	flex: 0 1 50%;
+	color: #fff;
+	font-weight: 500;
+	border: 1px solid black;
+	border-radius: 5px;
+	padding: 5px 10px;
+	font-size: 16px;
+	line-height: 1.5;
+}
+
+
+.actives {
+	display: flex;
+	justify-content: space-between;
+}
+
+.actives button {
+	padding: 5px 15px;
+	border-radius: 5px;
+	transition: font-weight ease 0.3s;
+}
+
+.inputContaiher button:hover,
+.item button:hover,
+.actives button:hover {
+	font-weight: 900;
+}
