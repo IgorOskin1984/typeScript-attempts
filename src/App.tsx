@@ -19,12 +19,17 @@ function App() {
 		const newTasks = tasks.filter(t => t.id !== id)
 		setTasks(newTasks)
 	}
+	const addNewTask = (inputTitle: string) => {
+		const newTask = { id: 5, title: inputTitle, isDone: false }
+		setTasks(tasks.concat(newTask))
+	}
 
 	return (
 		<div className="App">
 			<Todolist title={title}
 				tasks={tasks}
 				deleteTask={deleteTask}
+				addNewTask={addNewTask}
 			/>
 		</div>
 	);

@@ -11,11 +11,12 @@ type PropsType = {
 	title: string
 	tasks: Array<TaskType>
 	deleteTask: (id: number) => void
+	addNewTask: (inputTitle: string) => void
 }
 
 export const Todolist = (props: PropsType) => {
 
-	const [inputTitle, setInputTitle] = useState('Hello')
+	const [inputTitle, setInputTitle] = useState('')
 
 	const listItemCreater = (tasks: Array<TaskType>) => {
 		return tasks.map((t) => {
@@ -47,7 +48,10 @@ export const Todolist = (props: PropsType) => {
 						setInputTitle(e.target.value)
 					}}
 				/>
-				<button>+</button>
+				<button onClick={() => {
+					props.addNewTask(inputTitle)
+					setInputTitle('')
+				}}>+</button>
 			</div>
 
 			<ul className={s.list}>
