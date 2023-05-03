@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import s from './Todolist.module.css'
 
 export type TaskType = {
-	id: number
+	id: string
 	title: string
 	isDone: boolean
 }
@@ -10,7 +10,7 @@ export type TaskType = {
 type PropsType = {
 	title: string
 	tasks: Array<TaskType>
-	deleteTask: (id: number) => void
+	deleteTask: (id: string) => void
 	addNewTask: (inputTitle: string) => void
 }
 
@@ -58,7 +58,6 @@ export const Todolist = (props: PropsType) => {
 					props.addNewTask(inputTitle)
 					setInputTitle('')
 				}}
-
 				>+</button>
 			</div>
 

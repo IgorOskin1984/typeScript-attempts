@@ -16,12 +16,12 @@ const initialTasks = [
 function App() {
 
 	const [tasks, setTasks] = useState(initialTasks)
-	const deleteTask = (id: number) => {
+	const deleteTask = (id: string) => {
 		const newTasks = tasks.filter(t => t.id !== id)
 		setTasks(newTasks)
 	}
 	const addNewTask = (inputTitle: string) => {
-		const newTask = { id: 5, title: inputTitle, isDone: false }
+		const newTask = { id: v1(), title: inputTitle, isDone: false }
 		setTasks(tasks.concat(newTask))
 	}
 
