@@ -1,5 +1,6 @@
-import React, { useState } from "react";
+import React, { MouseEvent, MouseEventHandler, useState } from "react";
 import s from './Todolist.module.css'
+import { FilterType } from "../../App";
 
 export type TaskType = {
 	id: string
@@ -12,6 +13,7 @@ type PropsType = {
 	tasks: Array<TaskType>
 	deleteTask: (id: string) => void
 	addNewTask: (inputTitle: string) => void
+	filterTasksName: (filterName: FilterType) => void
 }
 
 export const Todolist = (props: PropsType) => {
@@ -66,9 +68,9 @@ export const Todolist = (props: PropsType) => {
 			</ul >
 
 			<div className={s.actives}>
-				<button>All</button>
-				<button>Active</button>
-				<button>Completed</button>
+				<button onClick={() => { props.filterTasksName('All') }}>All</button>
+				<button onClick={() => { props.filterTasksName('Active') }}>Active</button>
+				<button onClick={() => { props.filterTasksName('Completed') }}>Completed</button>
 			</div>
 		</div >
 	)
