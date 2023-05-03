@@ -1,14 +1,15 @@
 import React, { useState } from 'react';
 import './App.css';
 import { TaskType, Todolist } from './Components/Todolist/Todolist';
+import { v1 } from 'uuid';
 
 const title = 'What to learn'
 
 const initialTasks = [
-	{ id: 1, title: 'Rest API', isDone: true },
-	{ id: 2, title: 'HTML CSS', isDone: false },
-	{ id: 3, title: 'React', isDone: false },
-	{ id: 4, title: 'Redux', isDone: true },
+	{ id: v1(), title: 'Rest API', isDone: true },
+	{ id: v1(), title: 'HTML CSS', isDone: false },
+	{ id: v1(), title: 'React', isDone: false },
+	{ id: v1(), title: 'Redux', isDone: true },
 ]
 
 
