@@ -21,14 +21,16 @@ type PropsType = {
 export function Todolist(props: PropsType) {
 
 	const [newTaskTitle, setNewTaskTitle] = useState('')
-	const onNewTaskTitleChangeHandler = (e: ChangeEvent<HTMLInputElement>) => { setNewTaskTitle(e.currentTarget.value) }
+	const [error, setError] = useState<string | null>(null)
+
+	const onNewTaskTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
+		setNewTaskTitle(e.currentTarget.value)
+		setError('')
+	}
 	const onKeyPressUpHendler = (e: KeyboardEvent<HTMLInputElement>) => {
-		if (newTaskTitle.trim() === '') {
-			return
-		}
+		setError(null)
 		if (e.code === 'Enter') {
-			props.addTask(newTaskTitle.trim())
-			setNewTaskTitle('')
+			addTask()
 		}
 	}
 	const addTask = () => {
@@ -36,7 +38,13 @@ export function Todolist(props: PropsType) {
 			props.addTask(newTaskTitle.trim())
 			setNewTaskTitle('')
 		}
+		else {
+			setError('Empty field')
+		}
 	}
+
+
+
 	const onAllchangeFilter = () => props.changeFilter('All')
 	const onActivechangeFilter = () => props.changeFilter('Active')
 	const onCompletedchangeFilter = () => props.changeFilter('Completed')
@@ -44,13 +52,22 @@ export function Todolist(props: PropsType) {
 	return (
 		<div className={s.container} >
 			<h3>{props.title}</h3>
-			<div className={s.inputContainer} >
-				<input placeholder={'type new task'}
-					value={newTaskTitle}
-					onChange={onNewTaskTitleChangeHandler}
-					onKeyUp={onKeyPressUpHendler}
-				/>
-				<button onClick={addTask} >+</button>
+			<div className={s.wrapper}>
+				<div className={s.inputContainer} >
+					<input placeholder={'type new task'}
+						value={newTaskTitle}
+						onChange={onNewTaskTitleChange}
+						onKeyUp={onKeyPressUpHendler}
+						onBlur={() => { setError('') }}
+						className={error ? s.error : ''}
+					/>
+					<button onClick={addTask} >+</button>
+				</div>
+				{error &&
+					<div className={s.errorMessageDiv}>
+						<p>{error}</p>
+					</div>
+				}
 			</div>
 			<div className={s.actives}>
 				<button onClick={onAllchangeFilter}>All</button>

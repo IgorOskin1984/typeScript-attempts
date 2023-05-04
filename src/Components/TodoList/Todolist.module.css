@@ -8,6 +8,12 @@
 	border-radius: 10px;
 }
 
+.wrapper {
+	display: flex;
+	flex-direction: column;
+	gap: 10px;
+}
+
 .inputContainer {
 	display: flex;
 	gap: 20px;
@@ -28,6 +34,19 @@
 	color: black;
 	border-radius: 5px;
 	font-size: 16px;
+}
+
+.error {
+	border: 1px solid red;
+}
+
+.errorMessageDiv p {
+	text-align: center;
+	color: red;
+	font-size: 16px;
+	line-height: 1.5;
+	margin: 0;
+	padding: 3px 10px;
 }
 
 .list {
