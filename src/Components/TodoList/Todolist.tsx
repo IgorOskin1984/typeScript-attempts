@@ -1,7 +1,8 @@
 import { type } from "os";
-import React, { ChangeEvent, ChangeEventHandler, KeyboardEvent, KeyboardEventHandler, useState } from "react";
+import React, { ChangeEvent, ChangeEventHandler, KeyboardEvent, KeyboardEventHandler, MouseEvent, useState } from "react";
 import s from './Todolist.module.css'
 import { FilterType } from "../../App";
+import { log } from "console";
 
 export type TaskType = {
 	id: string,
@@ -11,9 +12,10 @@ export type TaskType = {
 
 type PropsType = {
 	title: string
+	id: string
 	tasks: Array<TaskType>
 	deleteTask: (id: string) => void
-	changeFilter: (value: FilterType) => void
+	changeFilter: (value: FilterType, id: string) => void
 	addTask: (value: string) => void
 	changeStatus: (id: string, isDone: boolean) => void
 	filterName: FilterType
@@ -46,12 +48,13 @@ export function Todolist(props: PropsType) {
 
 
 
-	const onAllchangeFilter = () => props.changeFilter('All')
-	const onActivechangeFilter = () => props.changeFilter('Active')
-	const onCompletedchangeFilter = () => props.changeFilter('Completed')
+	const onAllchangeFilter = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter('All', e.currentTarget.id)
+	const onActivechangeFilter = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter('Active', e.currentTarget.id)
+	const onCompletedchangeFilter = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter('Completed', e.currentTarget.id)
+
 
 	return (
-		<div className={s.container} >
+		<div id={props.id} className={s.container} >
 			<h3>{props.title}</h3>
 			<div className={s.wrapper}>
 				<div className={s.inputContainer} >
@@ -71,11 +74,11 @@ export function Todolist(props: PropsType) {
 				}
 			</div>
 			<div className={s.actives}>
-				<button className={props.filterName === 'All' ? s.isActive : ''}
+				<button id={props.id} className={props.filterName === 'All' ? s.isActive : ''}
 					onClick={onAllchangeFilter}>All</button>
-				<button className={props.filterName === 'Active' ? s.isActive : ''}
+				<button id={props.id} className={props.filterName === 'Active' ? s.isActive : ''}
 					onClick={onActivechangeFilter}>Active</button>
-				<button className={props.filterName === 'Completed' ? s.isActive : ''}
+				<button id={props.id} className={props.filterName === 'Completed' ? s.isActive : ''}
 					onClick={onCompletedchangeFilter}>Completed</button>
 			</div>
 			<ul className={s.list}>
