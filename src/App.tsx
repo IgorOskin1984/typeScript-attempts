@@ -74,6 +74,8 @@ function App() {
 		//const deleteIndex = todolists.findIndex(tl => tl.id === todolistsId)
 		//todolists.splice(deleteIndex, 1)
 		setTodolists(newTodolists)
+		delete tasks[todolistsId]
+		setTasks({ ...tasks })
 	}
 
 	return (
