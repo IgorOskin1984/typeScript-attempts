@@ -25,13 +25,14 @@ function App() {
 		const newTask = { id: v1(), title: inputTitle, isDone: false }
 		setTasks(tasks.concat(newTask))
 	}
-	const changeStatus = (taskId: string, idDone: boolean) => {
-		let task = tasks.find(t => t.id === taskId)
+	const changeStatus = (id: string, isDone: boolean) => {
+		let task = tasks.find(t => t.id === id)
 		if (task) {
-			task.isDone = idDone
+			task.isDone = isDone
 		}
+		//if (task === tasks[0])
+		//	alert('same')
 		setTasks([...tasks])
-
 
 	}
 
