@@ -25,9 +25,17 @@ function App() {
 		const newTask = { id: v1(), title: inputTitle, isDone: false }
 		setTasks(tasks.concat(newTask))
 	}
+	const changeStatus = (taskId: string, idDone: boolean) => {
+		let task = tasks.find(t => t.id === taskId)
+		if (task) {
+			task.isDone = idDone
+		}
+		setTasks([...tasks])
+
+
+	}
 
 	const [filterName, setFilterName] = useState<FilterType>('All')
-
 	const changeFilter = (filterName: FilterType) => {
 		setFilterName(filterName)
 	}
@@ -48,6 +56,7 @@ function App() {
 				deleteTask={deleteTask}
 				addTask={addNewTask}
 				changeFilter={changeFilter}
+				changeStatus={changeStatus}
 			/>
 		</div>
 	);
