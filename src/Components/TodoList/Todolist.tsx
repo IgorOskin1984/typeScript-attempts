@@ -48,13 +48,13 @@ export function Todolist(props: PropsType) {
 
 
 
-	const onAllchangeFilter = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter('All', e.currentTarget.id)
-	const onActivechangeFilter = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter('Active', e.currentTarget.id)
-	const onCompletedchangeFilter = (e: MouseEvent<HTMLButtonElement>) => props.changeFilter('Completed', e.currentTarget.id)
+	const onAllchangeFilter = () => props.changeFilter('All', props.id)
+	const onActivechangeFilter = () => props.changeFilter('Active', props.id)
+	const onCompletedchangeFilter = () => props.changeFilter('Completed', props.id)
 
 
 	return (
-		<div id={props.id} className={s.container} >
+		<div className={s.container} >
 			<h3>{props.title}</h3>
 			<div className={s.wrapper}>
 				<div className={s.inputContainer} >
@@ -74,11 +74,11 @@ export function Todolist(props: PropsType) {
 				}
 			</div>
 			<div className={s.actives}>
-				<button id={props.id} className={props.filterName === 'All' ? s.isActive : ''}
+				<button className={props.filterName === 'All' ? s.isActive : ''}
 					onClick={onAllchangeFilter}>All</button>
-				<button id={props.id} className={props.filterName === 'Active' ? s.isActive : ''}
+				<button className={props.filterName === 'Active' ? s.isActive : ''}
 					onClick={onActivechangeFilter}>Active</button>
-				<button id={props.id} className={props.filterName === 'Completed' ? s.isActive : ''}
+				<button className={props.filterName === 'Completed' ? s.isActive : ''}
 					onClick={onCompletedchangeFilter}>Completed</button>
 			</div>
 			<ul className={s.list}>
