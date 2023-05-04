@@ -70,9 +70,10 @@ function App() {
 	}
 
 	const deleteTodolist = (todolistsId: string) => {
-		const deleteIndex = todolists.findIndex(tl => tl.id === todolistsId)
-		todolists.splice(deleteIndex, 1)
-		setTodolists([...todolists])
+		const newTodolists = todolists.filter(tdl => tdl.id !== todolistsId)
+		//const deleteIndex = todolists.findIndex(tl => tl.id === todolistsId)
+		//todolists.splice(deleteIndex, 1)
+		setTodolists(newTodolists)
 	}
 
 	return (
