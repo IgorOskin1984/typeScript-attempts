@@ -12,11 +12,11 @@ export type TaskType = {
 
 type PropsType = {
 	title: string
-	id: string
+	todolistId: string
 	tasks: Array<TaskType>
-	deleteTask: (id: string) => void
+	deleteTask: (id: string, todolistsId: string) => void
 	changeFilter: (value: FilterType, id: string) => void
-	addTask: (value: string) => void
+	addTask: (value: string, todolistsId: string) => void
 	changeStatus: (id: string, isDone: boolean) => void
 	filterName: FilterType
 }
@@ -38,7 +38,7 @@ export function Todolist(props: PropsType) {
 	}
 	const addTask = () => {
 		if (newTaskTitle.trim() !== '') {
-			props.addTask(newTaskTitle.trim())
+			props.addTask(newTaskTitle.trim(), props.todolistId)
 			setNewTaskTitle('')
 		}
 		else {
@@ -48,9 +48,9 @@ export function Todolist(props: PropsType) {
 
 
 
-	const onAllchangeFilter = () => props.changeFilter('All', props.id)
-	const onActivechangeFilter = () => props.changeFilter('Active', props.id)
-	const onCompletedchangeFilter = () => props.changeFilter('Completed', props.id)
+	const onAllchangeFilter = () => props.changeFilter('All', props.todolistId)
+	const onActivechangeFilter = () => props.changeFilter('Active', props.todolistId)
+	const onCompletedchangeFilter = () => props.changeFilter('Completed', props.todolistId)
 
 
 	return (
@@ -83,7 +83,7 @@ export function Todolist(props: PropsType) {
 			</div>
 			<ul className={s.list}>
 				{props.tasks.map((t) => {
-					const onClickDeleteTask = () => { props.deleteTask(t.id) }
+					const onClickDeleteTask = () => { props.deleteTask(t.id, props.todolistId) }
 					const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) => { props.changeStatus(t.id, e.currentTarget.checked) }
 					return (
 						<li key={t.id}
