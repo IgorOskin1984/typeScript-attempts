@@ -30,8 +30,10 @@ function App() {
 		if (task) {
 			task.isDone = isDone
 		}
+		//*==========================
 		//if (task === tasks[0])
 		//	alert('same')
+		//*==========================
 		setTasks([...tasks])
 
 	}
