@@ -37,7 +37,7 @@ export function Todolist(props: PropsType) {
 				<h3>{props.title}</h3>
 				<button onClick={removeTodolist}>x</button>
 			</div>
-			<AddItemForm addTask={props.addTask} todolistId={props.todolistId} />
+			<AddItemForm addItem={props.addTask} todolistId={props.todolistId} />
 			{/*<div className={s.wrapper}>
 				<div className={s.inputContainer} >
 					<input placeholder={'type new task'}
