@@ -80,6 +80,10 @@ function App() {
 
 	return (
 		<div className="App">
+			<div>
+				<input type="text" />
+				<button>+</button>
+			</div>
 			{todolists.map((tl) => {
 				let filteredTasks = tasks[tl.id];
 

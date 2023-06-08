@@ -102,3 +102,13 @@ export function Todolist(props: PropsType) {
 		</div>
 	)
 }
+
+type AddItemFormPropsType = {
+
+}
+
+const AddItemForm = (props: AddItemFormPropsType) => {
+	return <>
+
+	</>
+}
