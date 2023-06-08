@@ -82,7 +82,7 @@ function App() {
 	return (
 		<div className="App">
 
-			<AddItemForm addItem={() => { }} todolistId='' />
+			<AddItemForm addItem={(title: string) => { alert(title) }} />
 
 			{todolists.map((tl) => {
 				let filteredTasks = tasks[tl.id];

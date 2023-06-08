@@ -31,6 +31,10 @@ export function Todolist(props: PropsType) {
 	const onActivechangeFilter = () => props.changeFilter('Active', props.todolistId)
 	const onCompletedchangeFilter = () => props.changeFilter('Completed', props.todolistId)
 
+	const addNewTask = (title: string) => {
+
+	}
+
 	return (
 		<div className={s.container} >
 			<div className={s.titleContainer}>
