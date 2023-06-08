@@ -79,10 +79,20 @@ function App() {
 		setTasks({ ...tasks })
 	}
 
+	const addTodolist = (title: string) => {
+		const newTodolist: TodolistsType = {
+			id: v1(),
+			title: title,
+			filterName: 'All'
+		}
+		setTodolists([newTodolist, ...todolists])
+
+	}
+
 	return (
 		<div className="App">
 
-			<AddItemForm addItem={(title: string) => { alert(title) }} />
+			<AddItemForm addItem={addTodolist} />
 
 			{todolists.map((tl) => {
 				let filteredTasks = tasks[tl.id];
