@@ -38,6 +38,7 @@ export function Todolist(props: PropsType) {
 				<h3>{props.title}</h3>
 				<button onClick={removeTodolist}>x</button>
 			</div>
+			<AddItemForm addTask={props.addTask} todolistId={props.todolistId} />
 			{/*<div className={s.wrapper}>
 				<div className={s.inputContainer} >
 					<input placeholder={'type new task'}
@@ -82,7 +83,8 @@ export function Todolist(props: PropsType) {
 }
 
 type AddItemFormPropsType = {
-
+	addTask: (value: string, todolistsId: string) => void,
+	todolistId: string
 }
 
 const AddItemForm = (props: AddItemFormPropsType) => {
