@@ -86,6 +86,10 @@ function App() {
 			filterName: 'All'
 		}
 		setTodolists([newTodolist, ...todolists])
+		setTasks({
+			...tasks,
+			[newTodolist.id]: []
+		})
 
 	}
 
