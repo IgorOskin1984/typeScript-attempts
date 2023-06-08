@@ -32,7 +32,7 @@ export function Todolist(props: PropsType) {
 	const onCompletedchangeFilter = () => props.changeFilter('Completed', props.todolistId)
 
 	const addNewTask = (title: string) => {
-
+		props.addTask(title, props.todolistId)
 	}
 
 	return (
@@ -41,7 +41,7 @@ export function Todolist(props: PropsType) {
 				<h3>{props.title}</h3>
 				<button onClick={removeTodolist}>x</button>
 			</div>
-			<AddItemForm addItem={props.addTask} todolistId={props.todolistId} />
+			<AddItemForm addItem={addNewTask} />
 			{/*<div className={s.wrapper}>
 				<div className={s.inputContainer} >
 					<input placeholder={'type new task'}
