@@ -24,28 +24,6 @@ type PropsType = {
 
 export function Todolist(props: PropsType) {
 
-	const [newTaskTitle, setNewTaskTitle] = useState('')
-	const [error, setError] = useState<string | null>(null)
-
-	const onNewTaskTitleChange = (e: ChangeEvent<HTMLInputElement>) => {
-		setNewTaskTitle(e.currentTarget.value)
-		setError('')
-	}
-	const onKeyPressUpHendler = (e: KeyboardEvent<HTMLInputElement>) => {
-		setError(null)
-		if (e.code === 'Enter') {
-			addTask()
-		}
-	}
-	const addTask = () => {
-		if (newTaskTitle.trim() !== '') {
-			props.addTask(newTaskTitle.trim(), props.todolistId)
-			setNewTaskTitle('')
-		}
-		else {
-			setError('Empty field')
-		}
-	}
 	const removeTodolist = () => {
 		props.deleteTodolist(props.todolistId)
 	}
@@ -60,7 +38,7 @@ export function Todolist(props: PropsType) {
 				<h3>{props.title}</h3>
 				<button onClick={removeTodolist}>x</button>
 			</div>
-			<div className={s.wrapper}>
+			{/*<div className={s.wrapper}>
 				<div className={s.inputContainer} >
 					<input placeholder={'type new task'}
 						value={newTaskTitle}
@@ -76,7 +54,7 @@ export function Todolist(props: PropsType) {
 						<p>{error}</p>
 					</div>
 				}
-			</div>
+			</div>*/}
 			<div className={s.actives}>
 				<button className={props.filterName === 'All' ? s.isActive : ''}
 					onClick={onAllchangeFilter}>All</button>
