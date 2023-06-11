@@ -75,7 +75,7 @@ function App() {
 		}
 		setTodolists([...todolists])
 	}
-
+	//========================================================================================================================================================
 	const deleteTodolist = (todolistsId: string) => {
 		const newTodolists = todolists.filter(tdl => tdl.id !== todolistsId)
 		//const deleteIndex = todolists.findIndex(tl => tl.id === todolistsId)
@@ -96,8 +96,17 @@ function App() {
 			...tasks,
 			[newTodolist.id]: []
 		})
+	}
+
+	const renameTodolist = (title: string, todolistsId: string) => {
+		const todolist = todolists.find(tdl => tdl.id === todolistsId)
+		if (todolist) {
+			todolist.title = title
+		}
+		setTodolists([...todolists])
 
 	}
+	//========================================================================================================================================================
 
 	return (
 		<div className="App">
@@ -125,6 +134,7 @@ function App() {
 					changeTaskTitle={changeTaskTitle}
 					filterName={tl.filterName}
 					deleteTodolist={deleteTodolist}
+					renameTodolist={renameTodolist}
 				/>
 			})}
 
