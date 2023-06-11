@@ -86,18 +86,10 @@ function App() {
 			...todolists,
 			newTodolist
 		])
-		console.log(newTodolist)
-		console.log(newTodolist.id);
-		//console.log(newTodolist[id]);
-		console.log([newTodolist.id]);
-
-
-		//setTasks({
-		//	...tasks,
-		//	newTodolist.id
-		//})
-
-
+		setTasks({
+			...tasks,
+			[newTodolist.id]: []
+		})
 	}
 
 	return (
