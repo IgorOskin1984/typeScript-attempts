@@ -17,7 +17,8 @@ type PropsType = {
 	deleteTask: (id: string, todolistsId: string) => void
 	changeFilter: (value: FilterType, id: string) => void
 	addTask: (value: string, todolistsId: string) => void
-	changeStatus: (id: string, isDone: boolean, todolistsId: string) => void
+	changeTaskStatus: (id: string, isDone: boolean, todolistsId: string) => void
+	changeTaskTitle: (id: string, title: string, todolistsId: string) => void
 	filterName: FilterType
 	deleteTodolist: (todolistsId: string) => void
 }
@@ -35,6 +36,7 @@ export function Todolist(props: PropsType) {
 	const addNewTask = (title: string) => {
 		props.addTask(title, props.todolistId)
 	}
+
 
 	return (
 		<div className={s.container} >
@@ -54,12 +56,15 @@ export function Todolist(props: PropsType) {
 			<ul className={s.list}>
 				{props.tasks.map((t) => {
 					const onClickDeleteTask = () => { props.deleteTask(t.id, props.todolistId) }
-					const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) => { props.changeStatus(t.id, e.currentTarget.checked, props.todolistId) }
+					const onChangeCheckbox = (e: ChangeEvent<HTMLInputElement>) => { props.changeTaskStatus(t.id, e.currentTarget.checked, props.todolistId) }
+					const changeTaskTitle = (newTitle: string) => {
+						props.changeTaskTitle(t.id, newTitle, props.todolistId)
+					}
 					return (
 						<li key={t.id}
 							className={t.isDone ? s.item + ' ' + s.isDone : s.item}>
 							<input type="checkbox" onChange={onChangeCheckbox} checked={t.isDone} />
-							<EditeblSpan title={t.title} />
+							<EditeblSpan title={t.title} changeTitle={changeTaskTitle} />
 							<button onClick={onClickDeleteTask}>delete</button>
 						</li>
 					)

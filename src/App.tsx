@@ -49,7 +49,7 @@ function App() {
 		//tasks[todolistsId] = tasks[todolistsId].concat(newTask)
 		setTasks({ ...tasks })
 	}
-	const changeStatus = (id: string, isDone: boolean, todolistsId: string) => {
+	const changeTaskStatus = (id: string, isDone: boolean, todolistsId: string) => {
 		let task = tasks[todolistsId].find(t => t.id === id)
 		if (task) {
 			task.isDone = isDone
@@ -59,7 +59,13 @@ function App() {
 		//	alert('same')
 		//*==========================
 		setTasks({ ...tasks })
-
+	}
+	const changeTaskTitle = (id: string, newTitle: string, todolistsId: string) => {
+		let task = tasks[todolistsId].find(t => t.id === id)
+		if (task) {
+			task.title = newTitle
+		}
+		setTasks({ ...tasks })
 	}
 
 	const changeFilter = (filterName: FilterType, id: string) => {
@@ -115,7 +121,8 @@ function App() {
 					deleteTask={deleteTask}
 					addTask={addNewTask}
 					changeFilter={changeFilter}
-					changeStatus={changeStatus}
+					changeTaskStatus={changeTaskStatus}
+					changeTaskTitle={changeTaskTitle}
 					filterName={tl.filterName}
 					deleteTodolist={deleteTodolist}
 				/>

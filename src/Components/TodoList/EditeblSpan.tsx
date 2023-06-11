@@ -2,6 +2,7 @@ import { ChangeEvent, useState } from "react"
 
 type EditeblSpanPropsType = {
 	title: string
+	changeTitle: (newTitle: string) => void
 }
 export const EditeblSpan = (props: EditeblSpanPropsType) => {
 	const [editMode, seteditMode] = useState(false)
@@ -13,6 +14,7 @@ export const EditeblSpan = (props: EditeblSpanPropsType) => {
 	}
 	const activateViewMode = () => {
 		seteditMode(false)
+		props.changeTitle(title)
 	}
 
 	const onChangeTitleHandler = (e: ChangeEvent<HTMLInputElement>) => {
