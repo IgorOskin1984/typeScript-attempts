@@ -1,6 +1,8 @@
 import { ChangeEvent } from "react";
+import { ChangeEvent } from "react";
 import s from './Todolist.module.css'
 import { FilterType } from "../../App";
+import { AddItemForm } from "./AddItemForm";
 import { AddItemForm } from "./AddItemForm";
 
 export type TaskType = {
@@ -15,7 +17,7 @@ type PropsType = {
 	tasks: Array<TaskType>
 	deleteTask: (id: string, todolistsId: string) => void
 	changeFilter: (value: FilterType, id: string) => void
-	addTask: (value: string, todolistsId: string) => void
+	addNewTask: (value: string, todolistsId: string) => void
 	changeStatus: (id: string, isDone: boolean, todolistsId: string) => void
 	filterName: FilterType
 	deleteTodolist: (todolistsId: string) => void
