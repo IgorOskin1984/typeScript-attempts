@@ -9,9 +9,14 @@ export const EditeblSpan = (props: EditeblSpanPropsType) => {
 	const activateEditMode = () => {
 		seteditMode(true)
 	}
+	const activateViewMode = () => {
+		seteditMode(false)
+	}
+
+
 
 	return editMode
-		? <input type="text" value={props.title} />
+		? <input onBlur={activateViewMode} type="text" value={props.title} />
 		: <span onDoubleClick={activateEditMode}>{props.title}</span>
 
 }
