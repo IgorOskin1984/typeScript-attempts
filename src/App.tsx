@@ -80,13 +80,19 @@ function App() {
 	}
 
 	const createTodoList = (title: string) => {
-		alert(title)
+		const newTodolist = { id: v1(), title: title, filterName: 'All' }
+		todolists.push(newTodolist)
+		console.log(todolists);
+
+		setTodolists([...todolists]);
+		setTasks({: []})
 	}
 
 	return (
 		<div className="App">
 			<AddItemForm addItem={createTodoList} />
 			{todolists.map((tl) => {
+				debugger
 				let filteredTasks = tasks[tl.id];
 
 				if (tl.filterName === 'Active') {
