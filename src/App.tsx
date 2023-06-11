@@ -3,7 +3,6 @@ import './App.css';
 import { TaskType, Todolist } from './Components/TodoList/Todolist';
 import { v1 } from 'uuid';
 import { AddItemForm } from './Components/TodoList/AddItemForm';
-import { AddItemForm } from './Components/TodoList/AddItemForm';
 
 
 type TodolistsType = {
@@ -100,7 +99,6 @@ function App() {
 			<AddItemForm addItem={addTodolist} />
 
 			{todolists.map((tl) => {
-				debugger
 				let filteredTasks = tasks[tl.id];
 
 				if (tl.filterName === 'Active') {
@@ -115,7 +113,7 @@ function App() {
 					title={tl.title}
 					tasks={filteredTasks}
 					deleteTask={deleteTask}
-					addNewTask={addNewTask}
+					addTask={addNewTask}
 					changeFilter={changeFilter}
 					changeStatus={changeStatus}
 					filterName={tl.filterName}

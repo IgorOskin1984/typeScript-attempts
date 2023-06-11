@@ -1,8 +1,6 @@
 import { ChangeEvent } from "react";
-import { ChangeEvent } from "react";
 import s from './Todolist.module.css'
 import { FilterType } from "../../App";
-import { AddItemForm } from "./AddItemForm";
 import { AddItemForm } from "./AddItemForm";
 
 export type TaskType = {
@@ -17,7 +15,7 @@ type PropsType = {
 	tasks: Array<TaskType>
 	deleteTask: (id: string, todolistsId: string) => void
 	changeFilter: (value: FilterType, id: string) => void
-	addNewTask: (value: string, todolistsId: string) => void
+	addTask: (value: string, todolistsId: string) => void
 	changeStatus: (id: string, isDone: boolean, todolistsId: string) => void
 	filterName: FilterType
 	deleteTodolist: (todolistsId: string) => void
@@ -44,23 +42,6 @@ export function Todolist(props: PropsType) {
 				<button onClick={removeTodolist}>x</button>
 			</div>
 			<AddItemForm addItem={addNewTask} />
-			{/*<div className={s.wrapper}>
-				<div className={s.inputContainer} >
-					<input placeholder={'type new task'}
-						value={newTaskTitle}
-						onChange={onNewTaskTitleChange}
-						onKeyUp={onKeyPressUpHendler}
-						onBlur={() => { setError('') }}
-						className={error ? s.error : ''}
-					/>
-					<button onClick={addTask} >+</button>
-				</div>
-				{error &&
-					<div className={s.errorMessageDiv}>
-						<p>{error}</p>
-					</div>
-				}
-			</div>*/}
 			<div className={s.actives}>
 				<button className={props.filterName === 'All' ? s.isActive : ''}
 					onClick={onAllchangeFilter}>All</button>
