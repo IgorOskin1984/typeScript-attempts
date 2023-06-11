@@ -80,8 +80,23 @@ function App() {
 	}
 
 	const createTodoList = (title: string) => {
-		alert(title)
-		//setTodolists()
+		const newTodolist: TodolistsType = { id: todolistsId1, title: title, filterName: 'All' };
+
+		setTodolists([
+			...todolists,
+			newTodolist
+		])
+		console.log(newTodolist)
+		console.log(newTodolist.id);
+		//console.log(newTodolist[id]);
+		console.log([newTodolist.id]);
+
+
+		//setTasks({
+		//	...tasks,
+		//	newTodolist.id
+		//})
+
 
 	}
 
