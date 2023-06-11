@@ -98,12 +98,12 @@ function App() {
 		})
 	}
 
-	const renameTodolist = (title: string, todolistsId: string) => {
-		const todolist = todolists.find(tdl => tdl.id === todolistsId)
+	const changeTodolistTitle = (todolistId: string, newTitle: string) => {
+		const todolist = todolists.find(tdl => tdl.id === todolistId)
 		if (todolist) {
-			todolist.title = title
+			todolist.title = newTitle
+			setTodolists([...todolists])
 		}
-		setTodolists([...todolists])
 
 	}
 	//========================================================================================================================================================
@@ -134,7 +134,7 @@ function App() {
 					changeTaskTitle={changeTaskTitle}
 					filterName={tl.filterName}
 					deleteTodolist={deleteTodolist}
-					renameTodolist={renameTodolist}
+					changeTodolistTitle={changeTodolistTitle}
 				/>
 			})}
 

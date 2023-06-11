@@ -21,7 +21,7 @@ type PropsType = {
 	changeTaskTitle: (id: string, newTitle: string, todolistId: string) => void
 	filterName: FilterType
 	deleteTodolist: (todolistId: string) => void
-	renameTodolist: (title: string, todolistId: string) => void
+	changeTodolistTitle: (todolistId: string, newTitle: string) => void
 }
 
 export function Todolist(props: PropsType) {
@@ -38,9 +38,9 @@ export function Todolist(props: PropsType) {
 		props.addTask(title, props.todolistId)
 	}
 
-	const intermediaterenameTodolistFunction = (title: string) => {
+	const changeTodolistTitle = (newTitle: string) => {
 		//debugger
-		props.renameTodolist(title, props.todolistId)
+		props.changeTodolistTitle(newTitle, props.todolistId)
 	}
 
 
@@ -48,7 +48,7 @@ export function Todolist(props: PropsType) {
 		<div className={s.container} >
 			<div className={s.titleContainer}>
 				<h3>{
-					<EditeblSpan title={props.title} onChange={intermediaterenameTodolistFunction} />
+					<EditeblSpan title={props.title} onChange={changeTodolistTitle} />
 				}</h3>
 				<button onClick={removeTodolist}>x</button>
 			</div>
