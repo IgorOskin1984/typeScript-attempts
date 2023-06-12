@@ -1,7 +1,8 @@
 import { ChangeEvent, KeyboardEvent, useState } from "react"
 
 type EditeblSpanPropsType = {
-	title: string
+	title: string,
+	changeTitle: (title: string) => void
 }
 export const EditeblSpan = (props: EditeblSpanPropsType) => {
 	const [editMode, seteditMode] = useState(false)
@@ -13,6 +14,7 @@ export const EditeblSpan = (props: EditeblSpanPropsType) => {
 	}
 	const activateViewMode = () => {
 		seteditMode(false)
+		props.changeTitle(title)
 		setTitle('')
 	}
 
