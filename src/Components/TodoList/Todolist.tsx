@@ -14,13 +14,14 @@ type PropsType = {
 	title: string
 	todolistId: string
 	tasks: Array<TaskType>
-	deleteTask: (id: string, todolistsId: string) => void
+	deleteTask: (id: string, todolistId: string) => void
 	changeFilter: (value: FilterType, id: string) => void
-	addTask: (value: string, todolistsId: string) => void
-	changeStatus: (id: string, isDone: boolean, todolistsId: string) => void
-	changeTaskTitle: (title: string, taskId: string, todolistsId: string) => void
+	addTask: (value: string, todolistId: string) => void
+	changeStatus: (id: string, isDone: boolean, todolistId: string) => void
+	changeTaskTitle: (title: string, taskId: string, todolistId: string) => void
 	filterName: FilterType
-	deleteTodolist: (todolistsId: string) => void
+	deleteTodolist: (todolistId: string) => void
+	changeTodolistTitle: (title: string, todolistId: string) => void
 }
 
 export function Todolist(props: PropsType) {
@@ -36,11 +37,16 @@ export function Todolist(props: PropsType) {
 	const addNewTask = (title: string) => {
 		props.addTask(title, props.todolistId)
 	}
+	const changeTodolistTitle = (title: string) => {
+		props.changeTodolistTitle(title, props.todolistId)
+	}
 
 	return (
 		<div className={s.container} >
 			<div className={s.titleContainer}>
-				<h3>{props.title}</h3>
+				<h3>
+					<EditeblSpan changeTitle={changeTodolistTitle} title={props.title} />
+				</h3>
 				<button onClick={removeTodolist}>x</button>
 			</div>
 			<AddItemForm addItem={addNewTask} />
