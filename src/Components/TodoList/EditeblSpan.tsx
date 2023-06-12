@@ -12,7 +12,11 @@ export const EditeblSpan = (props: EditeblSpanPropsType) => {
 	const activateViewMode = () => {
 		seteditMode(false)
 	}
+
+	const onKeyUpHandler = (e: KeyboardEvent<HTMLInputElement>) => {
+		if (e.key === 'Enter') activateViewMode()
+	}
 	return editMode
-		? <input onBlur={activateViewMode} autoFocus type="text" value={props.title} />
+		? <input onKeyUp={onKeyUpHandler} onBlur={activateViewMode} autoFocus type="text" value={props.title} />
 		: <span onDoubleClick={activateEditMode}>{props.title} </span>
 }
