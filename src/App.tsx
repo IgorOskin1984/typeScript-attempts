@@ -53,6 +53,7 @@ function App() {
 		let task = tasks[todolistsId].find(t => t.id === id)
 		if (task) {
 			task.isDone = isDone
+			setTasks({ ...tasks })
 		}
 		//*==========================
 		//if (task === tasks[0])
@@ -85,6 +86,13 @@ function App() {
 		setTasks({ ...tasks })
 	}
 
+	const changeTodolistTitle = (title: string, todolistId: string) => {
+		const todolist = todolists.find(tdl => tdl.id === todolistId);
+		if (todolist) {
+			todolist.title = title;
+			setTodolists([...todolists])
+		}
+	}
 	const addTodolist = (title: string) => {
 		const newTodolist: TodolistsType = {
 			id: v1(),

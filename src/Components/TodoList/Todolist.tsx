@@ -37,12 +37,9 @@ export function Todolist(props: PropsType) {
 	const addNewTask = (title: string) => {
 		props.addTask(title, props.todolistId)
 	}
-
-	const changeTodolistTitle = (newTitle: string) => {
-		//debugger
-		props.changeTodolistTitle(newTitle, props.todolistId)
+	const changeTodolistTitle = (title: string) => {
+		props.changeTodolistTitle(title, props.todolistId)
 	}
-
 
 	return (
 		<div className={s.container} >
